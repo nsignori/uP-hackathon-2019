@@ -56,7 +56,7 @@ int main(void)
 }
 
 ISR(TCC1_OVF_vect) {
-	
+	quarterSecElapsed = 1;
 }
 
 void speaker_init(void) {
