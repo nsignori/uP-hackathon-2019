@@ -14,6 +14,7 @@
 #include "tc.h"
 #include "songs.h"
 
+
 extern void clock_init(void);
 void speaker_init(void);
 void init_gpio(void);
@@ -29,8 +30,11 @@ volatile uint8_t quarterSecElapsed = 0;
 
 int main(void)
 {
+	for (int i = 0; i < 256; i++) {
+		sin[i] = sin[i] << 2;
+	}
 	clock_init();
-	
+	speaker_init();
 	//baud=0; bsel=0 => baud = 2MHz
 	USARTE0_init(0,0);
 	dac_init();
@@ -55,8 +59,10 @@ int main(void)
 			if (!noteDuration) {
 				note = song[songVectIndexer++];
 				set_note(note);
-				noteDuration = song[songVectIndexer++];
+				noteDuration = song[songVectIndexer++] - '0';
 			}
+			
+			noteDuration--;
 		}
     }
 }
@@ -82,7 +88,9 @@ void sys_interr_init(void) {
 }
 
 void set_note(char note) {
-	//delay few ms
+	TCC0.CTRLA = TC_CLKSEL_OFF_gc;
+	while (TCC1.CNT < 3000);
+	TCC0.CTRLA = TC_CLKSEL_DIV1_gc;
 	switch(note) {
 		case 'C': {
 			TCC0.PER = (uint16_t) 119;

@@ -11,7 +11,7 @@ void tcc0_init(void) {
 	/* set evsys ch0 */
 	EVSYS.CH0MUX = EVSYS_CHMUX_TCC0_OVF_gc;
 	
-	TCC0.CTRLA = TC_CLKSEL_DIV1024_gc;
+	TCC0.CTRLA = TC_CLKSEL_DIV1_gc;
 	
 	TCC0.CNT = 0;
 	
