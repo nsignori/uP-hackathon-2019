@@ -139,6 +139,12 @@
     <Compile Include="dma.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="ebi.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ebi.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="lut_8_1.h">
       <SubType>compile</SubType>
     </Compile>
