@@ -18,7 +18,7 @@ void dma_init(uint16_t * LUT, uint16_t dest_addr) {
 					DMA_CH_BURSTLEN_2BYTE_gc |
 					DMA_CH_REPEAT_bm;
 
-	DMA.CH0.TRIGSRC = DMA_CH_TRIGSRC_ADCA_CH0_gc;
+	DMA.CH0.TRIGSRC = DMA_CH_TRIGSRC_EVSYS_CH0_gc;
 	//uint8_t LUT_size = (uint8_t) (512);
 	DMA.CH0.TRFCNT = 2;
 	DMA.CH0.SRCADDR0 = byte0(LUT);
