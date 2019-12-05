@@ -24,9 +24,13 @@ void set_note(char note);
 volatile int songVectIndexer = 0;
 volatile uint8_t noteDuration = 0;
 volatile char note = 0;
-
 //global flag to indicate when quarter sec has elapsed
 volatile uint8_t quarterSecElapsed = 0;
+
+
+// IR Flags
+volatile uint8_t codes[2];
+volatile uint8_t nextCode = 5; // Init to 5 so it doesn't trigger UART stuff
 
 int main(void)
 {
@@ -35,8 +39,8 @@ int main(void)
 	}
 	clock_init();
 	speaker_init();
-	//baud=0; bsel=0 => baud = 2MHz
-	USARTE0_init(0,0);
+	//bscale=0; bsel=1110 => baud = 2MHz
+	USARTE0_init(1110, 0);
 	dac_init();
 	dma_init(sin, &DACA_CH1DATA);
 	
@@ -51,9 +55,24 @@ int main(void)
 	tcc1_enable();
 	sys_interr_init();
 	
-	char * song = mary;
+	char* song = mary;
     while (1) 
     {
+		if(nextCode == 2) {
+			nextCode = 3;
+			if(codes[0] == 0x55 && codes[1] == 0x77) { // Button 1 - 0x5577
+				song = mary;
+			} else if(codes[0] == 0x57 && codes[1] == 0x75) { // Button 2 - 0x5775
+				song = mary;
+			} else if(codes[0] == 0xD7 && codes[1] == 0x57) { // Button 3 - 0xD757
+				song = mary;
+			} else if(codes[0] == 0x57 && codes[1] == 0xD7) { // Button 4 - 0x57D7
+				song = mary;
+			} else if(codes[0] == 0xD7 && codes[1] == 0x5D) { // Button 5 - 0xD75D
+				song = mary;
+			}
+		}
+		
 		if (quarterSecElapsed) {
 			quarterSecElapsed = 0;
 			if (!noteDuration) {
@@ -141,6 +160,15 @@ void set_note(char note) {
 			TCC0.PER = (uint16_t) 63;
 			break;
 		}
+	}
+}
+
+ISR(USARTE0_RXC_vect) {
+	char newChar = USARTE0_in_char();
+	if(newChar == 0xD5) {
+		nextCode = 0;
+	} else if (nextCode < 2) {
+		codes[nextCode++] = newChar;
 	}
 }
 
