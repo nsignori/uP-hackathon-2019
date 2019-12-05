@@ -22,27 +22,29 @@ Discarded input sections
                 0x00000000       0x28 dac.o
  .debug_ranges  0x00000000       0x18 dac.o
  .debug_line    0x00000000      0x12d dac.o
- .debug_str     0x00000000      0x492 dac.o
+ .debug_str     0x00000000      0x494 dac.o
  .comment       0x00000000       0x31 dac.o
  .debug_frame   0x00000000       0x34 dac.o
  .text          0x00000000        0x0 dma.o
  .data          0x00000000        0x0 dma.o
  .bss           0x00000000        0x0 dma.o
  .text.dma_init
-                0x00000000       0x62 dma.o
+                0x00000000       0x8a dma.o
  .debug_info    0x00000000      0x648 dma.o
  .debug_abbrev  0x00000000      0x10c dma.o
  .debug_loc     0x00000000       0x55 dma.o
  .debug_aranges
                 0x00000000       0x20 dma.o
  .debug_ranges  0x00000000       0x10 dma.o
- .debug_line    0x00000000      0x15f dma.o
- .debug_str     0x00000000      0xddc dma.o
+ .debug_line    0x00000000      0x165 dma.o
+ .debug_str     0x00000000      0xdde dma.o
  .comment       0x00000000       0x31 dma.o
  .debug_frame   0x00000000       0x30 dma.o
  .text          0x00000000        0x0 quarter_sec_timer.o
  .data          0x00000000        0x0 quarter_sec_timer.o
  .bss           0x00000000        0x0 quarter_sec_timer.o
+ .text.sys_interr_init
+                0x00000000        0xa quarter_sec_timer.o
  .text          0x00000000        0x0 tc.o
  .data          0x00000000        0x0 tc.o
  .bss           0x00000000        0x0 tc.o
@@ -64,7 +66,7 @@ Discarded input sections
                 0x00000000       0x48 tc.o
  .debug_ranges  0x00000000       0x38 tc.o
  .debug_line    0x00000000      0x196 tc.o
- .debug_str     0x00000000     0x12f5 tc.o
+ .debug_str     0x00000000     0x12f7 tc.o
  .comment       0x00000000       0x31 tc.o
  .debug_frame   0x00000000       0x74 tc.o
  .text          0x00000000        0x0 usart.o
@@ -73,23 +75,23 @@ Discarded input sections
  .text.USARTE0_init
                 0x00000000       0x1e usart.o
  .text.USARTE0_out_char
-                0x00000000       0x10 usart.o
+                0x00000000        0xe usart.o
  .text.USARTE0_out_string
                 0x00000000       0x1e usart.o
  .text.USARTE0_in_char
-                0x00000000       0x10 usart.o
+                0x00000000        0xe usart.o
  .text.USARTE0_enable_interrupts
-                0x00000000       0x70 usart.o
- .debug_info    0x00000000      0x43e usart.o
- .debug_abbrev  0x00000000      0x13b usart.o
- .debug_loc     0x00000000      0x183 usart.o
+                0x00000000       0x72 usart.o
+ .debug_info    0x00000000      0x45a usart.o
+ .debug_abbrev  0x00000000      0x158 usart.o
+ .debug_loc     0x00000000      0x150 usart.o
  .debug_aranges
                 0x00000000       0x40 usart.o
  .debug_ranges  0x00000000       0x30 usart.o
- .debug_line    0x00000000      0x214 usart.o
- .debug_str     0x00000000      0x4fe usart.o
+ .debug_line    0x00000000      0x204 usart.o
+ .debug_str     0x00000000      0x500 usart.o
  .comment       0x00000000       0x31 usart.o
- .debug_frame   0x00000000       0x70 usart.o
+ .debug_frame   0x00000000       0x64 usart.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
@@ -235,7 +237,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x2a8
+.text           0x00000000      0x2a4
  *(.vectors)
  .vectors       0x00000000      0x1fc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1u/avrxmega7/crtatxmega128a1u.o
                 0x00000000                __vector_default
@@ -420,19 +422,17 @@ END GROUP
                 0x00000220                clock_init
                 0x0000024c                . = ALIGN (0x2)
  *(.text.*)
+ .text.startup.main
+                0x0000024c       0x2c quarter_sec_timer.o
+                0x0000024c                main
  .text.__vector_14
-                0x0000024c       0x28 quarter_sec_timer.o
-                0x0000024c                __vector_14
- .text.sys_interr_init
-                0x00000274        0xa quarter_sec_timer.o
-                0x00000274                sys_interr_init
- .text.main     0x0000027e       0x26 quarter_sec_timer.o
-                0x0000027e                main
-                0x000002a4                . = ALIGN (0x2)
+                0x00000278       0x28 quarter_sec_timer.o
+                0x00000278                __vector_14
+                0x000002a0                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000002a4        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
-                0x000002a4                _exit
-                0x000002a4                exit
+ .fini9         0x000002a0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
+                0x000002a0                _exit
+                0x000002a0                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -451,11 +451,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000002a4        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
+ .fini0         0x000002a0        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
  *(.fini0)
-                0x000002a8                _etext = .
+                0x000002a4                _etext = .
 
-.data           0x00802000        0x0 load address 0x000002a8
+.data           0x00802000        0x0 load address 0x000002a4
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -473,8 +473,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x000002a8                __data_load_start = LOADADDR (.data)
-                0x000002a8                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000002a4                __data_load_start = LOADADDR (.data)
+                0x000002a4                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00802000        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -555,33 +555,33 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x48a6
+.debug_info     0x00000000     0x48b4
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x3e5a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1u/avrxmega7/crtatxmega128a1u.o
- .debug_info    0x00003e5a       0x7c clock.o
- .debug_info    0x00003ed6      0x9d0 quarter_sec_timer.o
+ .debug_info    0x00003e5a       0x7e clock.o
+ .debug_info    0x00003ed8      0x9dc quarter_sec_timer.o
 
-.debug_abbrev   0x00000000     0x3c66
+.debug_abbrev   0x00000000     0x3c7e
  *(.debug_abbrev)
  .debug_abbrev  0x00000000     0x3b0e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1u/avrxmega7/crtatxmega128a1u.o
  .debug_abbrev  0x00003b0e       0x14 clock.o
- .debug_abbrev  0x00003b22      0x144 quarter_sec_timer.o
+ .debug_abbrev  0x00003b22      0x15c quarter_sec_timer.o
 
-.debug_line     0x00000000      0x5b4
+.debug_line     0x00000000      0x5ba
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x3b5 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1u/avrxmega7/crtatxmega128a1u.o
  .debug_line    0x000003b5       0x94 clock.o
- .debug_line    0x00000449      0x16b quarter_sec_timer.o
+ .debug_line    0x00000449      0x171 quarter_sec_timer.o
 
 .debug_frame    0x00000000       0x54
  *(.debug_frame)
  .debug_frame   0x00000000       0x54 quarter_sec_timer.o
 
-.debug_str      0x00000000     0x304d
+.debug_str      0x00000000     0x304f
  *(.debug_str)
  .debug_str     0x00000000     0x2969 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1u/avrxmega7/crtatxmega128a1u.o
- .debug_str     0x00002969      0x6e4 quarter_sec_timer.o
-                                0x729 (size before relaxing)
+ .debug_str     0x00002969      0x6e6 quarter_sec_timer.o
+                                0x72b (size before relaxing)
 
 .debug_loc      0x00000000       0x3c
  *(.debug_loc)

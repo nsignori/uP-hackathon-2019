@@ -18,11 +18,13 @@ int main(void) {
 	clock_init();
 	PORTC.OUTSET = PIN0_bm;
 	PORTC.DIRSET = PIN0_bm;
-	TCC0.PER = 7812;
+	TCC0.PER = 8000;
 	TCC0.CTRLA = TC_CLKSEL_DIV1024_gc;
 	TCC0.INTCTRLA = TC0_OVFINTLVL0_bm;
 	sys_interr_init();
-	while(1);
+	while(1) {
+		//PORTC.OUTTGL = PIN0_bm;
+	}
 	return 0;
 }
 
