@@ -37,8 +37,8 @@ void tcc1_enable(void) {
 
 void tcc1_init(void) {
 	/* 5ms */
-	TCC1.PER = 0x4000;
-	TCC1.INTCTRLA = TC1_OVFINTLVL1_bm;
+	TCC1.PER = 7812;
+	TCC1.INTCTRLA = TC1_OVFINTLVL0_bm;
 	TCC1.CNT = 0;
 }
 

@@ -29,6 +29,9 @@ int main(void)
 	USARTE0_enable_interrupts('R', 'L');
 	//enable frequency timer (DMA)
 	tcc0_init();
+	//enable note timer (0.25 s)
+	tcc1_init();
+	tcc1_enable();
 	sys_interr_init();
 	
 	
