@@ -1,9 +1,9 @@
 #include "usart.h"
 
 void USARTE0_init(uint16_t BSEL, uint8_t BSCALE) {
-	PORTD.OUTSET = PIN3_bm;
-	PORTD.DIRSET = PIN3_bm;
-	PORTD.DIRCLR = PIN2_bm;
+	//PORTD.OUTSET = PIN3_bm;
+	//PORTD.DIRSET = PIN3_bm;
+	PORTE.DIRCLR = PIN2_bm;
 	
 	USARTE0.BAUDCTRLA = (uint8_t) BSEL;
 	USARTE0.BAUDCTRLB = (uint8_t) ( (BSCALE << 4) | (BSEL >> 8) );
