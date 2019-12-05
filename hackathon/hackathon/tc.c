@@ -7,10 +7,11 @@ void tcc0_init(void) {
 	uint16_t per = numer / denom;
 	
 	TCC0.PER = per;
-	TCC0.INTCTRLA = TC0_OVFINTLVL0_bm;
 	
 	/* set evsys ch0 */
 	EVSYS.CH0MUX = EVSYS_CHMUX_TCC0_OVF_gc;
+	
+	TCC0.CTRLA = TC_CLKSEL_DIV1024_gc;
 	
 	TCC0.CNT = 0;
 	
