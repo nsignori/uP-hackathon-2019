@@ -12,6 +12,7 @@
 #include "usart.h"
 #include "lut_8_1.h"
 #include "tc.h"
+#include "songs.h"
 
 extern void clock_init(void);
 void speaker_init(void);
