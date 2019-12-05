@@ -2,7 +2,7 @@
  * hackathon.c
  *
  * Created: 12/4/2019 10:42:35 PM
- * Author : Nick
+ * Author : Nick and spencer
  */ 
 
 #include <avr/io.h>
