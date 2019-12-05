@@ -34,9 +34,7 @@ volatile uint8_t nextCode = 5; // Init to 5 so it doesn't trigger UART stuff
 
 int main(void)
 {
-	for (int i = 0; i < 256; i++) {
-		sin[i] = sin[i] << 2;
-	}
+	PORTJ.DIRSET = 0xF;
 	clock_init();
 	speaker_init();
 	//bscale=0; bsel=1110 => baud = 2MHz
@@ -57,6 +55,7 @@ int main(void)
 	
 	char* song = mary;
 	uint8_t songSize = sizeof(mary);
+	PORTJ.OUT = 0x1;
     while (1) 
     {
 		if(nextCode == 2) {
@@ -66,21 +65,25 @@ int main(void)
 				songVectIndexer = 0;
 				songSize = sizeof(mary);
 				noteDuration = 0;
+				PORTJ.OUT = 0x1;
 			} else if(codes[0] == 0x57 && codes[1] == 0x75) { // Button 2 - 0x5775
 				song = twinkle;
 				songVectIndexer = 0;
 				songSize = sizeof(twinkle);
 				noteDuration = 0;
+				PORTJ.OUT = 0x2;
 			} else if(codes[0] == 0xD7 && codes[1] == 0x57) { // Button 3 - 0xD757
 				song = jingle;
 				songVectIndexer = 0;
 				songSize = sizeof(jingle);
 				noteDuration = 0;
+				PORTJ.OUT = 0x4;
 			} else if(codes[0] == 0x57 && codes[1] == 0xD7) { // Button 4 - 0x57D7
 				song = bday;
 				songVectIndexer = 0;
 				songSize = sizeof(bday);
 				noteDuration = 0;
+				PORTJ.OUT = 0x8;
 			}
 		}
 		

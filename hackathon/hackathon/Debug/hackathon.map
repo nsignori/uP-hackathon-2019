@@ -245,7 +245,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x776
+.text           0x00000000      0x78a
  *(.vectors)
  .vectors       0x00000000      0x1fc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1u/avrxmega7/crtatxmega128a1u.o
                 0x00000000                __vector_default
@@ -453,36 +453,36 @@ END GROUP
  .text.set_note
                 0x0000038e       0xa0 main.o
                 0x0000038e                set_note
- .text.main     0x0000042e      0x1c8 main.o
+ .text.main     0x0000042e      0x1dc main.o
                 0x0000042e                main
  .text.__vector_58
-                0x000005f6       0x8c main.o
-                0x000005f6                __vector_58
+                0x0000060a       0x8c main.o
+                0x0000060a                __vector_58
  .text.tcc0_init
-                0x00000682       0x1c tc.o
-                0x00000682                tcc0_init
+                0x00000696       0x1c tc.o
+                0x00000696                tcc0_init
  .text.tcc1_enable
-                0x0000069e        0xe tc.o
-                0x0000069e                tcc1_enable
+                0x000006b2        0xe tc.o
+                0x000006b2                tcc1_enable
  .text.tcc1_init
-                0x000006ac       0x16 tc.o
-                0x000006ac                tcc1_init
+                0x000006c0       0x16 tc.o
+                0x000006c0                tcc1_init
  .text.USARTE0_init
-                0x000006c2       0x1e usart.o
-                0x000006c2                USARTE0_init
+                0x000006d6       0x1e usart.o
+                0x000006d6                USARTE0_init
  .text.USARTE0_in_char
-                0x000006e0       0x10 usart.o
-                0x000006e0                USARTE0_in_char
+                0x000006f4       0x10 usart.o
+                0x000006f4                USARTE0_in_char
  .text.USARTE0_enable_interrupts
-                0x000006f0       0x70 usart.o
-                0x000006f0                USARTE0_enable_interrupts
- .text.libgcc   0x00000760       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_tablejump2.o)
-                0x00000760                __tablejump2__
-                0x00000772                . = ALIGN (0x2)
+                0x00000704       0x70 usart.o
+                0x00000704                USARTE0_enable_interrupts
+ .text.libgcc   0x00000774       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_tablejump2.o)
+                0x00000774                __tablejump2__
+                0x00000786                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000772        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
-                0x00000772                _exit
-                0x00000772                exit
+ .fini9         0x00000786        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
+                0x00000786                _exit
+                0x00000786                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -501,11 +501,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000772        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
+ .fini0         0x00000786        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000776                _etext = .
+                0x0000078a                _etext = .
 
-.data           0x00802000      0x388 load address 0x00000776
+.data           0x00802000      0x388 load address 0x0000078a
                 0x00802000                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -550,8 +550,8 @@ END GROUP
  COMMON         0x0080238d        0x2 main.o
                 0x0080238d                codes
                 0x0080238f                PROVIDE (__bss_end, .)
-                0x00000776                __data_load_start = LOADADDR (.data)
-                0x00000afe                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000078a                __data_load_start = LOADADDR (.data)
+                0x00000b12                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080238f        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -644,35 +644,35 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x70b8
+.debug_info     0x00000000     0x709d
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x3e5a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1u/avrxmega7/crtatxmega128a1u.o
  .debug_info    0x00003e5a       0x7c clock.o
  .debug_info    0x00003ed6      0x4b8 dac.o
  .debug_info    0x0000438e      0x654 dma.o
- .debug_info    0x000049e2     0x1204 main.o
- .debug_info    0x00005be6     0x1094 tc.o
- .debug_info    0x00006c7a      0x43e usart.o
+ .debug_info    0x000049e2     0x11e9 main.o
+ .debug_info    0x00005bcb     0x1094 tc.o
+ .debug_info    0x00006c5f      0x43e usart.o
 
-.debug_abbrev   0x00000000     0x4192
+.debug_abbrev   0x00000000     0x4178
  *(.debug_abbrev)
  .debug_abbrev  0x00000000     0x3b0e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1u/avrxmega7/crtatxmega128a1u.o
  .debug_abbrev  0x00003b0e       0x14 clock.o
  .debug_abbrev  0x00003b22       0xe3 dac.o
  .debug_abbrev  0x00003c05      0x11b dma.o
- .debug_abbrev  0x00003d20      0x20f main.o
- .debug_abbrev  0x00003f2f      0x128 tc.o
- .debug_abbrev  0x00004057      0x13b usart.o
+ .debug_abbrev  0x00003d20      0x1f5 main.o
+ .debug_abbrev  0x00003f15      0x128 tc.o
+ .debug_abbrev  0x0000403d      0x13b usart.o
 
-.debug_line     0x00000000      0xe7e
+.debug_line     0x00000000      0xe94
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x3b5 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1u/avrxmega7/crtatxmega128a1u.o
  .debug_line    0x000003b5       0x94 clock.o
  .debug_line    0x00000449      0x12d dac.o
  .debug_line    0x00000576      0x165 dma.o
- .debug_line    0x000006db      0x3f9 main.o
- .debug_line    0x00000ad4      0x196 tc.o
- .debug_line    0x00000c6a      0x214 usart.o
+ .debug_line    0x000006db      0x40f main.o
+ .debug_line    0x00000aea      0x196 tc.o
+ .debug_line    0x00000c80      0x214 usart.o
 
 .debug_frame    0x00000000      0x224
  *(.debug_frame)
@@ -696,11 +696,11 @@ END GROUP
  .debug_str     0x00004bc0      0x240 usart.o
                                 0x4fe (size before relaxing)
 
-.debug_loc      0x00000000      0x415
+.debug_loc      0x00000000      0x401
  *(.debug_loc)
  .debug_loc     0x00000000       0x55 dma.o
- .debug_loc     0x00000055      0x23d main.o
- .debug_loc     0x00000292      0x183 usart.o
+ .debug_loc     0x00000055      0x229 main.o
+ .debug_loc     0x0000027e      0x183 usart.o
 
 .debug_macinfo
  *(.debug_macinfo)
