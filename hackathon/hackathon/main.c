@@ -7,9 +7,12 @@
 
 #include <avr/io.h>
 
+extern void clock_init(void);
 
 int main(void)
 {
+	clock_init();
+	
     /* Replace with your application code */
     while (1) 
     {
