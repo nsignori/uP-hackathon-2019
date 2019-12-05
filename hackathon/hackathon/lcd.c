@@ -9,62 +9,57 @@
 #include "lcd.h"
 #include "ebi.h"
 
-#define lcd_port 0x370000
-
 void lcd_init(void) {
-	ebi_init();
+	
+	PORTC.OUTSET = 0xFF;
+	PORTC.DIRSET = 0xFF;
+	PORTF.OUTSET = RS | RW | E;
+	PORTF.DIRSET = RS | RW | E;
 }
 
 void lcd_write_instruction(char instruction) {
 	uint8_t bitStream = 0;
 	//write RS, RW low
 	bitStream = ~RS & ~RW;
-	__far_mem_write(lcd_port, bitStream);
+	PORTF.OUT = bitStream;
 	
 	//set enable low
 	bitStream &= ~E;
-	__far_mem_write(lcd_port, bitStream);
+	PORTF.OUT = bitStream;
 	
 	//write the instruction to DB
-	__far_mem_write(lcd_port, instruction);
+	PORTC.OUT = instruction;
 	
 	//set enable high
 	bitStream |= E;
-	__far_mem_write(lcd_port, bitStream);
+	PORTF.OUT = bitStream;
 	
 	//set enable low
 	bitStream &= ~E;
-	__far_mem_write(lcd_port, bitStream);
+	PORTF.OUT = bitStream;
 	
 }
 
-char lcd_read(void) {
-	
-	
-}
 void lcd_write_char(char c) {
 	uint8_t bitStream = 0;
-	//write RS high (data, not instruction)
-	__far_mem_write(lcd_port, bitStream);
-	
-	//write RW low (writing, not reading)
-	bitStream &= ~RW;
-	__far_mem_write(lcd_port, bitStream);
-	
-	//write E low
-	bitStream &= ~E;
-	__far_mem_write(lcd_port, bitStream);
-	
-	//write char to data bus
-	__far_mem_write(lcd_port, c);
-	
-	//set enable high
-	bitStream |= E;
-	__far_mem_write(lcd_port, bitStream);
+	//write RS, RW low
+	bitStream = ~RS & ~RW;
+	PORTF.OUT = bitStream;
 	
 	//set enable low
 	bitStream &= ~E;
-	__far_mem_write(lcd_port, bitStream);
+	PORTF.OUT = bitStream;
+	
+	//write the instruction to DB
+	PORTC.OUT = c;
+	
+	//set enable high
+	bitStream |= E;
+	PORTF.OUT = bitStream;
+	
+	//set enable low
+	bitStream &= ~E;
+	PORTF.OUT = bitStream;
 }
 
 void lcd_write_string(char * str) {
