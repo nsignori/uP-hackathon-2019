@@ -56,20 +56,31 @@ int main(void)
 	sys_interr_init();
 	
 	char* song = mary;
+	uint8_t songSize = sizeof(mary);
     while (1) 
     {
 		if(nextCode == 2) {
 			nextCode = 3;
 			if(codes[0] == 0x55 && codes[1] == 0x77) { // Button 1 - 0x5577
 				song = mary;
+				songVectIndexer = 0;
+				songSize = sizeof(mary);
+				noteDuration = 0;
 			} else if(codes[0] == 0x57 && codes[1] == 0x75) { // Button 2 - 0x5775
-				song = mary;
+				song = twinkle;
+				songVectIndexer = 0;
+				songSize = sizeof(twinkle);
+				noteDuration = 0;
 			} else if(codes[0] == 0xD7 && codes[1] == 0x57) { // Button 3 - 0xD757
-				song = mary;
+				song = jingle;
+				songVectIndexer = 0;
+				songSize = sizeof(jingle);
+				noteDuration = 0;
 			} else if(codes[0] == 0x57 && codes[1] == 0xD7) { // Button 4 - 0x57D7
-				song = mary;
-			} else if(codes[0] == 0xD7 && codes[1] == 0x5D) { // Button 5 - 0xD75D
-				song = mary;
+				song = bday;
+				songVectIndexer = 0;
+				songSize = sizeof(bday);
+				noteDuration = 0;
 			}
 		}
 		
@@ -79,6 +90,9 @@ int main(void)
 				note = song[songVectIndexer++];
 				set_note(note);
 				noteDuration = song[songVectIndexer++] - '0';
+				if(songVectIndexer >= songSize-1) {
+					songVectIndexer = 0;
+				}
 			}
 			
 			noteDuration--;
@@ -112,53 +126,35 @@ void set_note(char note) {
 	TCC0.CTRLA = TC_CLKSEL_DIV1_gc;
 	switch(note) {
 		case 'C': {
-			TCC0.PER = (uint16_t) 119;
-			break;
-		}
-		case '3': {
-			TCC0.PER = (uint16_t) 113;
+			TCC0.PER = 120; // 1046.50 Hz
 			break;
 		}
 		case 'D': {
-			TCC0.PER = (uint16_t) 106;
-			break;
-		}
-		case '4': {
-			TCC0.PER = (uint16_t) 100;
+			TCC0.PER = 108; // 1174.66 Hz
 			break;
 		}
 		case 'E': {
-			TCC0.PER = (uint16_t) 95;
+			TCC0.PER = 96; // 1318.51 Hz
 			break;
 		}
 		case 'F': {
-			TCC0.PER = (uint16_t) 89;
+			TCC0.PER = 91; // 1396.91 Hz
 			break;
 		}
 		case 'G': {
-			TCC0.PER = (uint16_t) 84;
+			TCC0.PER = 81; // 1567.98 Hz
 			break;
 		}
-		case 'Y': {
-			TCC0.PER = (uint16_t) 79;
-			TCC1.CNT = 0;
+		case 'A': {
+			TCC0.PER = 71; // 1760 Hz
 			break;
 		}
-		case '7': {
-			TCC0.PER = (uint16_t) 75;
+		case 'B': {
+			TCC0.PER = 64; // 1975.53 Hz
 			break;
 		}
-		case 'U': {
-			TCC0.PER = (uint16_t) 71;
-			break;
-		}
-		case '8': {
-			TCC0.PER = (uint16_t) 67;
-			break;
-		}
-		case 'I': {
-			TCC0.PER = (uint16_t) 63;
-			break;
+		case '-': {
+			TCC0.CTRLA = TC_CLKSEL_OFF_gc;
 		}
 	}
 }
