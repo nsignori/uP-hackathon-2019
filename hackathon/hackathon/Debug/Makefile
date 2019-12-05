@@ -39,7 +39,7 @@ SUBDIRS :=
 C_SRCS +=  \
 ../dac.c \
 ../dma.c \
-../main.c \
+../quarter_sec_timer.c \
 ../tc.c \
 ../usart.c
 
@@ -55,7 +55,7 @@ OBJS +=  \
 clock.o \
 dac.o \
 dma.o \
-main.o \
+quarter_sec_timer.o \
 tc.o \
 usart.o
 
@@ -63,7 +63,7 @@ OBJS_AS_ARGS +=  \
 clock.o \
 dac.o \
 dma.o \
-main.o \
+quarter_sec_timer.o \
 tc.o \
 usart.o
 
@@ -71,7 +71,7 @@ C_DEPS +=  \
 clock.d \
 dac.d \
 dma.d \
-main.d \
+quarter_sec_timer.d \
 tc.d \
 usart.d
 
@@ -79,7 +79,7 @@ C_DEPS_AS_ARGS +=  \
 clock.d \
 dac.d \
 dma.d \
-main.d \
+quarter_sec_timer.d \
 tc.d \
 usart.d
 
@@ -111,7 +111,7 @@ LINKER_SCRIPT_DEP+=
 	@echo Finished building: $<
 	
 
-./main.o: .././main.c
+./quarter_sec_timer.o: .././quarter_sec_timer.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atxmega128a1u -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\gcc\dev\atxmega128a1u" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

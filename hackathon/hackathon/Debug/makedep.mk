@@ -8,7 +8,7 @@ dac.c
 
 dma.c
 
-main.c
+quarter_sec_timer.c
 
 tc.c
 
