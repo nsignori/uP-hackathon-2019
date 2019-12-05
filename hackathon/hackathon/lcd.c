@@ -19,13 +19,11 @@ void lcd_init(void) {
 
 void lcd_write_instruction(char instruction) {
 	uint8_t bitStream = 0;
-	//write RS, RW low
+	//write R~S, R~W low
 	bitStream = ~RS & ~RW;
 	PORTF.OUT = bitStream;
 	
-	//set enable low
-	bitStream &= ~E;
-	PORTF.OUT = bitStream;
+	
 	
 	//write the instruction to DB
 	PORTC.OUT = instruction;
@@ -46,11 +44,7 @@ void lcd_write_char(char c) {
 	bitStream = ~RS & ~RW;
 	PORTF.OUT = bitStream;
 	
-	//set enable low
-	bitStream &= ~E;
-	PORTF.OUT = bitStream;
-	
-	//write the instruction to DB
+	//write the char to DB
 	PORTC.OUT = c;
 	
 	//set enable high

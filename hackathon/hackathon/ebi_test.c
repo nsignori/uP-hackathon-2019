@@ -6,14 +6,16 @@
  */ 
 
 #include <avr/io.h>
-#include "ebi.h"
-#include "ebi_driver.h"
+#include "lcd.h"
 
 int main(void) {
-	ebi_init();
 	
+	lcd_init();
 	while(1) {
-		__far_mem_write(0x370000, 0x55);
+		lcd_write_instruction(0b00000110);
+	}
+	while(1) {
+		lcd_write_char(0x45);
 	}
 	return 0;
 	
