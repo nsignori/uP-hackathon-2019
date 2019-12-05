@@ -8,7 +8,11 @@ dac.c
 
 dma.c
 
-main.c
+ebi.c
+
+ebi_test.c
+
+lcd.c
 
 tc.c
 

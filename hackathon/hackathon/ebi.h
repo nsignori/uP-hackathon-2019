@@ -11,5 +11,4 @@
 
 void ebi_init(void);
 
-
 #endif /* EBI_H_ */
